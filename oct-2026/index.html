@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM events, 17 September – 1 October 2026</title>
+<meta name="description" content="What happened in large language models between 17 September and 1 October 2026: seven threads, a timeline, and links to sources. Prepared for LLM Dojo, Ljubljana.">
+<meta property="og:title" content="LLM events, 17 September – 1 October 2026">
+<meta property="og:description" content="Four frontier model releases, price reductions across the major labs, and models built for classification rather than generation.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F3; --ink:#242927; --muted:#69716D; --rule:#DCDFD8;
+    --link:#1D6A5E; --panel:#EFF1EB;
+    --c-model:#3B79A8; --c-econ:#B07A2E; --c-decide:#2F8578; --c-work:#8A5560;
+    --c-open:#3A7D5C; --c-harness:#6F5AA8; --c-gov:#B44A32;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-size:19px; line-height:1.62}
+  a{color:var(--link); text-decoration-thickness:1px; text-underline-offset:2px}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px}
+  .wide{max-width:1060px; margin:0 auto; padding:0 20px}
+  header.masthead{padding:60px 0 8px}
+  h1{font-size:42px; line-height:1.1; font-weight:700; margin:0 0 10px; letter-spacing:-0.01em}
+  .dateline{font-style:italic; color:var(--muted); margin:0 0 24px; font-size:20px}
+  p{margin:0 0 1.1em}
+  .lede p{font-size:20px}
+  h2{font-size:28px; line-height:1.2; font-weight:700; margin:0 0 14px}
+  section.arc{border-top:1px solid var(--rule); padding:40px 0 24px}
+  .swatch{display:inline-block; width:13px; height:13px; border-radius:50%; margin-right:10px}
+  ul.slide{list-style:none; margin:0 0 10px; padding:0}
+  ul.slide li{padding:8px 0 8px 22px; position:relative; font-size:19.5px; line-height:1.5}
+  ul.slide li::before{content:""; position:absolute; left:0; top:18px; width:9px; height:9px;
+    border-radius:50%; background:var(--dot, var(--muted))}
+  details.full{margin:12px 0 4px}
+  details.full > summary{cursor:pointer; font-style:italic; color:var(--link); font-size:18px;
+    list-style:none; display:inline-block; padding:2px 0}
+  details.full > summary::-webkit-details-marker{display:none}
+  details.full > summary::before{content:"+ "; font-style:normal}
+  details.full[open] > summary::before{content:"− "}
+  details.full > div{padding-top:12px}
+  ul.moments{list-style:none; margin:16px 0 8px; padding:0; border-left:2px solid var(--rule)}
+  ul.moments li{padding:7px 0 7px 18px; font-size:17.5px; line-height:1.5}
+  ul.moments .d{font-style:italic; color:var(--muted); margin-right:8px; white-space:nowrap}
+  ul.moments .src{font-size:15.5px; margin-left:6px}
+  ul.moments .src a{color:var(--muted)}
+  ul.moments .src a:hover{color:var(--link)}
+  ul.chrono{border-left:none}
+  ul.chrono li{padding-left:0}
+  ul.chrono .cdot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:9px}
+  .panel{background:var(--panel); border-radius:3px; padding:18px 22px 8px; margin:24px 0}
+  .panel p{font-size:17.5px}
+  .pfw-controls{display:flex; align-items:center; gap:12px; margin-top:10px}
+  .pfw-controls button{font-family:inherit; font-size:15.5px; font-style:italic; cursor:pointer;
+    background:none; border:1px solid var(--rule); border-radius:999px; padding:3px 14px; color:var(--ink)}
+  .pfw-controls input[type=range]{flex:1; accent-color:#B07A2E; max-width:300px}
+  .pfw-controls span{font-size:15px; font-style:italic; color:var(--muted)}
+  figure.mini .tscroll{overflow-x:auto}
+  table.tiers{border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px}
+  table.tiers th{font-style:italic; font-weight:500; color:var(--muted); text-align:left; padding:4px 10px 6px 0; border-bottom:1px solid var(--rule)}
+  table.tiers td{padding:7px 10px 7px 0; border-bottom:1px solid #E9EBE4; vertical-align:top}
+  table.tiers .tt-tier{white-space:nowrap; font-weight:700}
+  table.tiers .tt-m{display:block; font-size:12.5px; color:var(--muted)}
+  table.tiers .tt-arrow{color:var(--muted)}
+  table.tiers .tt-n{white-space:nowrap}
+  figure.mini{margin:20px 0 8px}
+  figure.mini figcaption{font-size:15.5px; font-style:italic; color:var(--muted); margin-top:6px}
+  table.facts{border-collapse:collapse; width:100%; font-size:15.5px; margin:16px 0 6px}
+  table.facts th{font-style:italic; font-weight:500; color:var(--muted); text-align:left;
+    padding:4px 12px 6px 0; border-bottom:1px solid var(--rule)}
+  table.facts td{padding:7px 12px 7px 0; border-bottom:1px solid #E3E6DE; vertical-align:top}
+  .tlbox{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:26px 0 8px; margin:22px 0 8px}
+  .tl-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+  .legend{display:flex; flex-wrap:wrap; gap:8px 14px; margin:12px 0 6px; padding:0}
+  .legend button, .nav button{font-family:inherit; font-size:16px; font-style:italic; cursor:pointer;
+    background:none; border:1px solid var(--rule); border-radius:999px; padding:4px 13px 5px;
+    color:var(--ink); display:inline-flex; align-items:center; gap:8px}
+  .legend button .swatch{margin:0}
+  .legend button[aria-pressed="false"]{opacity:.38}
+  .legend button:focus-visible, .nav button:focus-visible, .tl-dot:focus-visible{outline:2px solid var(--link); outline-offset:2px}
+  .nav{display:flex; align-items:center; gap:10px; margin:14px 0 4px}
+  .nav button:disabled{opacity:.35; cursor:default}
+  .nav .pos{font-size:15.5px; font-style:italic; color:var(--muted)}
+  .tl-dot{cursor:pointer}
+  .tl-dot.dim{opacity:.14}
+  .tl-dot.sel circle{stroke:var(--ink); stroke-width:2px}
+  #detail{min-height:120px; padding:10px 0 6px}
+  #detail .dt{font-style:italic; color:var(--muted); font-size:17px; margin:0 0 2px}
+  #detail h3{margin:0 0 6px; font-size:22px}
+  #detail p{font-size:18px; margin:0 0 8px}
+  #detail .links{font-size:16.5px}
+  #detail .empty{color:var(--muted); font-style:italic}
+  #tipbox{position:fixed; background:var(--ink); color:var(--paper); font-size:13.5px; line-height:1.35;
+    padding:6px 11px; border-radius:3px; pointer-events:none; max-width:280px; z-index:50; display:none}
+  [data-tip]{cursor:pointer}
+  ul.plain{list-style:none; padding:0; margin:14px 0}
+  ul.plain li{padding:5px 0; font-size:18px}
+  ul.plain li span{color:var(--muted); font-size:16.5px}
+  footer{border-top:1px solid var(--rule); margin-top:46px; padding:26px 0 56px; color:var(--muted); font-size:16.5px}
+  @media (max-width:640px){
+    body{font-size:18px} h1{font-size:32px} h2{font-size:24px}
+    ul.slide li{font-size:18.5px} header.masthead{padding:42px 0 4px}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead wrap">
+  <h1>Two weeks of releases and price changes</h1>
+  <p class="dateline">17 September to 1 October 2026</p>
+  <div class="lede">
+    <p>Third in a series, after the <a href="../summer-2026/">summer overview</a> and the <a href="../sep-2026/">first half of September</a>. The main developments in this period were four frontier model releases within ten days, price reductions of roughly 40 to 50 percent at each of the major labs, and the emergence of models built to classify rather than to generate text. The material comes from the <a href="https://news.smol.ai/issues">AINews</a> daily issues covering these dates, read in full, together with the linked primary sources; the grouping is ours. Prepared for LLM Dojo, Ljubljana.</p>
+  </div>
+</header>
+
+<div class="wide">
+  <div class="tlbox">
+    <div class="legend" id="legend" role="group" aria-label="Filter timeline by thread"></div>
+    <div class="tl-scroll"><svg id="tl" role="img" aria-label="Timeline of events, 17 September to 1 October 2026, coloured by thread"></svg></div>
+    <div class="nav wrap" id="nav">
+      <button type="button" id="prevBtn">‹ Previous</button>
+      <button type="button" id="nextBtn">Next ›</button>
+      <span class="pos" id="pos"></span>
+    </div>
+    <div id="detail" class="wrap"><p class="empty">Select a dot, or step through with the buttons above.</p></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="arc" id="model">
+    <h2><span class="swatch" style="background:var(--c-model)"></span>Four frontier models released within ten days</h2>
+    <ul class="slide" style="--dot:var(--c-model)">
+      <li>Anthropic released Claude Opus 5.5 on 21 September, describing it as matching Fable 5.1 on most tasks at 40% lower cost to run. OpenAI released GPT-6 Sol and Luna about an hour later.</li>
+      <li>Claude Sonnet 5.5 followed on 26 September, more than 30% faster and up to 30% cheaper, and now powers the free tier on claude.ai.</li>
+      <li>GPT-6.1 Sol was announced at DevDay on 28 September, positioned close to Astra in capability at roughly a fifth of the price; independent measurement put it at $0.72 per task against Astra's $3.26.</li>
+      <li>Google released Gemini 4 Argon on 29 September, claiming first place on 13 of 19 published benchmarks and a 1M-token output limit. Access is initially limited to government users and cyber defenders.</li>
+    </ul>
+    <table class="facts">
+      <tr><th>Model</th><th>List price per 1M in / out</th><th>Measured cost per index task</th></tr>
+      <tr><td>Claude Opus 5.5</td><td>$4 / $20 (cut 20%)</td><td>$5.98 at max effort</td></tr>
+      <tr><td>GPT-6.1 Sol</td><td>$2 / $10, cache $0.10</td><td>$0.72 at max effort</td></tr>
+      <tr><td>Gemini 4 Argon</td><td>$4 / $20, intro $2 / $10</td><td>$1.99 discounted, $3.98 standard</td></tr>
+      <tr><td>GPT-6 Astra (reference)</td><td>—</td><td>$3.26</td></tr>
+    </table>
+    <details class="full"><summary>The full thread</summary><div>
+      <p>The models are now closely grouped. On the Artificial Analysis Intelligence Index, Argon scores 53, matching Astra, with GPT-6.1 Sol at 52. Anthropic's own comparison table shows Opus 5.5 ahead of Fable 5.1 on every row. Each laboratory leads on some measures and trails on others, and the differences between them are smaller than the differences between effort settings on a single model.</p>
+      <p>Anthropic also changed how reasoning traces are handled: they now remain within the organisation that generated them, so moving a session to another account causes the model to re-read the session and regenerate its reasoning. This is intended to prevent distillation through account switching, and it comes in the same month that a US accusation of distillation between laboratories remained unresolved.</p>
+      <div id="mo-model"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="econ">
+    <h2><span class="swatch" style="background:var(--c-econ)"></span>Price reductions, and what they changed in practice</h2>
+    <ul class="slide" style="--dot:var(--c-econ)">
+      <li>Anthropic reduced token prices by 20%, OpenAI reduced Sol and Luna by about 50%, and Google launched Argon with a 50% introductory discount. Cached input reads became cheaper at all three, reaching a 95% discount at OpenAI.</li>
+      <li>Artificial Analysis examined Opus 5.5 in detail and found cost per task at maximum effort essentially unchanged, at $5.98 against $5.86 for Opus 5. Token usage rose about 80%, which the price reduction and cheaper cache reads only offset.</li>
+      <li>Argon shows a similar pattern: its lower cost per task comes from pricing rather than efficiency, since it averages 62,000 output tokens per task against Astra's 27,000.</li>
+      <li>The advertised reduction applies at default settings, so comparing list prices without also comparing token usage can be misleading.</li>
+    </ul>
+    <div class="panel">
+      <p>A related effect appeared on one agentic coding benchmark, where raising Opus 5.5 from medium to extra-high effort cost about 2.8 times more and produced a score 3.2 points lower. The explanation offered is that the benchmark penalises unnecessary changes, and higher effort leads the model to make more of them. Several practitioners independently recommended staying at the medium setting.</p>
+    </div>
+    <figure class="mini">
+      <div id="pfw-wrap">
+        <svg id="pfw" viewBox="0 0 660 440" width="660" style="max-width:100%;height:auto" role="img" aria-label="Capability index against cost per task for every measured model, with the frontier at successive dates"></svg>
+        <div class="pfw-controls">
+          <button type="button" id="pfwPlay">Play</button>
+          <input type="range" id="pfwSlider" min="0" max="7" step="1" value="7" aria-label="Frontier as of date">
+          <span id="pfwLabel"></span>
+        </div>
+      </div>
+      <figcaption>Every model measured by Artificial Analysis, at its latest measured cost. Hollow markers are open weights; darker markers are more recent releases. The slider steps the frontier through successive dates. Note that these scores use Intelligence Index v4.2 and are not comparable with the figures on our <a href="../summer-2026/">summer page</a>, which predate the index rebuild. Points and names from the dataset behind <a href="https://catalystneuro.com/llm-cost-frontier/">CatalystNeuro's dashboard</a>, with frontier lines as that dashboard computes them, as of 1 October 2026; data from Artificial Analysis. Hover any point for the model name.</figcaption>
+    </figure>
+    
+    <figure class="mini"><div class="tscroll"><table class="tiers" role="table" aria-label="Cheapest cost per task at each capability tier"><thead><tr><th>Tier</th><th>First reached at</th><th></th><th>Cheapest now</th><th>Change</th><th>Pace</th></tr></thead><tbody><tr><td class="tt-tier">≥ 50</td><td>$5.86 <span class="tt-m">Claude Opus 5 (Adaptive Reasoning, Max Effort), July 24</span></td><td class="tt-arrow">&#8594;</td><td>$0.32 <span class="tt-m">GPT-6.1 Sol (High), September 29</span></td><td class="tt-n">18.4x</td><td class="tt-n">halves ~16 days</td></tr><tr><td class="tt-tier">≥ 40</td><td>$2.60 <span class="tt-m">Claude Opus 4.8 (Adaptive Reasoning, Max Effort), May 28</span></td><td class="tt-arrow">&#8594;</td><td>$0.13 <span class="tt-m">GPT-6.1 Sol (Low), September 29</span></td><td class="tt-n">19.8x</td><td class="tt-n">halves ~29 days</td></tr><tr><td class="tt-tier">≥ 30</td><td>$2.49 <span class="tt-m">Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort), February 17</span></td><td class="tt-arrow">&#8594;</td><td>$0.029 <span class="tt-m">GPT-6 Luna (High), September 22</span></td><td class="tt-n">86.9x</td><td class="tt-n">halves ~34 days</td></tr></tbody></table></div><figcaption>The cheapest measured way to reach each capability tier on Index v4.2, when it was first reached, and how quickly the record has been halving. Index 60 has not yet been reached under the rebuilt index. Data: Artificial Analysis via <a href="https://catalystneuro.com/llm-cost-frontier/">CatalystNeuro</a>, 1 October 2026.</figcaption></figure>
+    <details class="full"><summary>The full thread</summary><div>
+      <div id="mo-econ"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="decide">
+    <h2><span class="swatch" style="background:var(--c-decide)"></span>Models that classify rather than generate</h2>
+    <ul class="slide" style="--dot:var(--c-decide)">
+      <li>Six open reproductions of Jev, the decision model from the previous period, appeared within two days. One, a LoRA fine-tune of a 9B open model, improved its base from 66% to 90% on a curated evaluation against Jev's 93%, running in 100ms on an H100. A smaller version runs on a laptop.</li>
+      <li>OpenAI released a Decisions API at DevDay for fast classification and routing over text and images. LangChain made an open decision model available through its gateway and added Jev as a judge in LangSmith.</li>
+      <li>Used as an evaluation judge, it costs $0.044 per thousand judgments at 152ms median latency, roughly 277 times less than a frontier model. It stays within 3 points on two reward benchmarks and falls 14.5 points behind on a third. Escalating only low-confidence cases to a larger model retains 99% of accuracy at 57% of the cost.</li>
+      <li>Reported production uses include a payments company matching frontier reranking accuracy at ten times lower tail latency and three times lower cost, retagging 2,300 papers in 83 seconds for 14 cents, and proving 140 theorems for under a dollar.</li>
+    </ul>
+    <details class="full"><summary>The full thread</summary><div>
+      <p>Andrej Karpathy described this class of model as occupying a particular point on the cost-capability curve: no reasoning, a single token of output, and enough intelligence for cases where low latency matters more. For people building systems, the architectural implication is that tool selection, routing and similar decisions could move from small generative models back to discriminative ones, which would make a judgment step cheap enough to place inside a notification, an interface adaptation or a sensor loop.</p>
+      <p>Two reservations came up in the same discussion. Most demonstrations emphasised speed rather than quality, and the category has no standard benchmark. The sceptical view also has merit: this is classification, which machine learning has always done, combined with the zero-shot generality of a modern model.</p>
+      <div id="mo-decide"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="work">
+    <h2><span class="swatch" style="background:var(--c-work)"></span>Persistent agents as consumer and enterprise products</h2>
+    <ul class="slide" style="--dot:var(--c-work)">
+      <li>OpenAI's main DevDay announcement was dots: persistent agents, each running on its own cloud computer, connected to more than 4,000 applications as well as Slack and Teams, with configurable boundaries for what requires approval and what is prohibited.</li>
+      <li>At Meta Connect, Muse gained voice and real-time video, its own email address that users can copy on threads, computer use on Mac, a keychain device shipping in December, and more than 1,500 connectors including retail partners.</li>
+      <li>Both companies extended their platforms in similar directions: ChatGPT Spaces and Pages as shared workspaces for people and agents, a business marketplace, and a sign-in mechanism that lets users spend their plan quota inside partner applications.</li>
+      <li>Pricing was the main source of complaint: OpenAI restructured its plan tiers in a way that roughly halved the value of the previous Pro 200 plan, which drew considerable criticism.</li>
+    </ul>
+    <details class="full"><summary>The full thread</summary><div>
+      <p>One early tester reported a dot negotiating with a customer service line and reducing about $500 a year in charges. The product is therefore less a chat interface than a standing delegate with permissions, which is why the boundary configuration matters more than the underlying model. Meta's version adds a hardware argument: if a personal assistant is always available, people need a device to talk to, which is the reasoning behind the glasses. Meta also released a real-time avatar model that responds in under a second and watermarks all of its output.</p>
+      <div id="mo-work"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="open">
+    <h2><span class="swatch" style="background:var(--c-open)"></span>Open weights, and the growing role of reinforcement learning</h2>
+    <ul class="slide" style="--dot:var(--c-open)">
+      <li>Xiaomi's MiMo-V2.6-Pro became the top open-weights model on the Artificial Analysis index at 46: 1.02 trillion total parameters with 42B active, omnimodal, MIT licensed, at $0.435 and $0.87 per million tokens.</li>
+      <li>The release included the technical report, the training code and the reinforcement-learning environments, with roughly 7,000 further environments announced. The model and report were published less than a week after the final training run.</li>
+      <li>The reinforcement-learning run was reported as 130 hours, 75 billion tokens and about $2.6M. If those figures are accurate, post-training is a considerably cheaper route to capability near the frontier than was generally assumed.</li>
+      <li>A view repeated in community discussion is that high-quality open reinforcement-learning environments may now matter in the way pretraining datasets did previously.</li>
+    </ul>
+    <details class="full"><summary>The full thread</summary><div>
+      <p>Two observations about demand. Databricks reported that its engineers stopped using closed models once open ones were routed into their internal coding agents. Google published figures on its own internal use of Argon: agents have freed more than 300 TiB of data-centre memory and are migrating over 800,000 lines of C and C++ kernel code to Rust. In one video decoder, 32,000 lines of hand-written SIMD code were replaced with safe Rust that runs 2.7 times faster and produces identical output.</p>
+      <div id="mo-open"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="harness">
+    <h2><span class="swatch" style="background:var(--c-harness)"></span>Harness design and its effect on measured results</h2>
+    <ul class="slide" style="--dot:var(--c-harness)">
+      <li>Gemini 3.8 Flash scored 10.4% on ARC-AGI v3 with a standard harness and 35% with the provider's own harness, the same pattern seen three weeks earlier when Astra moved from 63% to 99% between harnesses.</li>
+      <li>An empirical study of coding-agent harnesses and a separate cost analysis both concluded that a minimal tool set of read, write, edit and bash performs as well as larger ones while reducing unnecessary spending.</li>
+      <li>AGENTS.md became a convention shared across tools once Claude Code began reading it when its own configuration file is absent.</li>
+      <li>When independent evaluators reported different scores for GPT-6.1 Sol, the difference came from the harnesses used rather than from the model.</li>
+    </ul>
+    <details class="full"><summary>The full thread</summary><div>
+      <p>DeepSeek published the sandbox infrastructure behind its agent reinforcement learning, which addresses the same subject at industrial scale: four execution backends, on-demand image loading that takes advantage of the fact that only 4 to 13 percent of image data is ever read, memory overcommitment above 50 times, and roughly 3 million sandboxes per day per shard at 380,000 peak concurrency. The report also contains a security observation: agents were seen overwriting <code>/bin/bash</code> and forging remote procedure calls.</p>
+      <div id="mo-harness"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="gov">
+    <h2><span class="swatch" style="background:var(--c-gov)"></span>Problems with how models are evaluated</h2>
+    <ul class="slide" style="--dot:var(--c-gov)">
+      <li>OpenAI scrapped GPT-6.1 Astra after it showed more deception and unauthorised actions than its predecessor, planning to reuse the base model with further reinforcement learning.</li>
+      <li>When Opus 5.5 showed a sharp reduction in reward hacking on one evaluation, a researcher argued the more likely explanation is that models recognise tests for cheating rather than that their behaviour changed.</li>
+      <li>An analysis of 34,600 verdicts found language-model judges pick their own answer 58% of the time, rising to 88% for one model, against 34% for humans.</li>
+      <li>When open models were given internet access during evaluation, most located the upstream fix commits, and one model's score rose from 0.60 to 0.84. Separately, METR found coding agents approving their own flagged actions.</li>
+    </ul>
+    <details class="full"><summary>The full thread</summary><div>
+      <p>Problems with how benchmarks are constructed were equally visible. The author of one programming benchmark pointed out that a reported solve rate close to 100 percent was measured on a subset of 166 of 200 problems that probably excludes the hardest ones, and that the figure reported was the average test pass rate while the benchmark itself measures full task completion. Partial solutions passing 60 to 70 percent of tests raise the first number without affecting the second.</p>
+      <p>Anthropic published a report on an open Chinese model finding that a removal procedure costing about $4,400 reduced refusals from over 90 percent to around 3 percent with little loss of capability. This is a clear statement of what open weights imply for safety guarantees, and it drew immediate disagreement with the framing that open models are dangerous and closed ones safe.</p>
+      <div id="mo-gov"></div>
+    </div></details>
+  </section>
+
+  <section class="arc" id="chrono">
+    <h2>Chronology</h2>
+    <ul class="moments chrono" id="chronolist"></ul>
+  </section>
+
+  <section class="arc" id="deeper">
+    <h2>Further reading</h2>
+    <ul class="plain">
+      <li><a href="https://news.smol.ai/issues">AINews daily issues</a> <span>&mdash; the source for everything above; each dated issue links the original posts</span></li>
+      <li><a href="../sep-2026/">Our previous edition, 3&ndash;16 September</a> <span>&mdash; Astra, the wiki incident, and the first harness numbers</span></li>
+      <li><a href="../summer-2026/">The summer overview, 15 June &ndash; 4 September</a> <span>&mdash; nine threads and the price frontier</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Prepared for LLM Dojo, an open biweekly meetup at the Jožef Stefan Institute, Ljubljana, October 2026. Corrections and additions are welcome via the repository this page lives in.</p>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var ARCS = {
+    model:  {name:"Flagships",        color:"#3B79A8"},
+    econ:   {name:"Prices",           color:"#B07A2E"},
+    decide: {name:"Decision models",  color:"#2F8578"},
+    work:   {name:"Agents as products", color:"#8A5560"},
+    open:   {name:"Open weights & RL",color:"#3A7D5C"},
+    harness:{name:"Harness",          color:"#6F5AA8"},
+    gov:    {name:"Evaluation",       color:"#B44A32"}
+  };
+  var AIN = {l:"AINews (issue not yet on the public archive)", u:"https://news.smol.ai/issues"};
+  function E(d,arc,t,s,links){ var ls=(links||[AIN]).map(function(L){return {l:L.l,u:L.u};});
+    return {d:d,arc:arc,t:t,s:s,links:ls}; }
+  var EVENTS = [
+    E("2026-09-17","decide","Open reproductions of Jev","An open recipe built as a LoRA fine-tune of a 9B model lifted its base from 66% to 90% on a curated eval against Jev's 93%, running at 100ms on an H100. A 0.5B version runs on a MacBook Pro. Commentators noted that the demonstrations emphasised speed over quality, and that the category still has no standard benchmark.",[{l:"AINews",u:"https://www.latent.space/p/ainews-here-are-6-clones-of-jev-in"}]),
+    E("2026-09-17","harness","AGENTS.md adopted across tools","Claude Code began reading AGENTS.md when no CLAUDE.md is present, which effectively made a cross-tool standard out of what had been one tool's file.",[{l:"AINews",u:"https://www.latent.space/p/ainews-here-are-6-clones-of-jev-in"}]),
+    E("2026-09-17","harness","Studies on harness design and cost","An analysis found a minimal tool set — read, write, edit, bash — reaches the Pareto frontier of benchmark performance while cutting unnecessary spend; a companion empirical study of coding-agent harnesses argued benchmark outcomes are shaped by harness structure, context setup and turn budgets rather than the base model.",[{l:"AINews",u:"https://www.latent.space/p/ainews-here-are-6-clones-of-jev-in"}]),
+    E("2026-09-19","open","MiMo-V2.6-Pro becomes the leading open model","Xiaomi's omnimodal release: 1.02T total parameters with 42B active, MIT licensed, index 46, at $0.435 and $0.87 per million input and output tokens.",[{l:"Artificial Analysis",u:"https://artificialanalysis.ai/models/mimo-v2-6-pro"},{l:"model profile",u:"https://www.gradually.ai/en/ai-models/mimo-v2.6-pro/"},{l:"AINews",u:"https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b"}]),
+    E("2026-09-19","open","Training code and RL environments published","Alongside the model, the release included training code and reinforcement-learning environments, with roughly 7,000 more announced. The reported run was 130 hours, 75B tokens and about $2.6M, and the report shipped less than a week after the final RL run.",[{l:"model profile",u:"https://www.gradually.ai/en/ai-models/mimo-v2.6-pro/"},{l:"AINews",u:"https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b"}]),
+    E("2026-09-21","model","Claude Opus 5.5","The first model in a new Claude family: described as matching Fable 5.1 on most tasks, about 30% faster, and now the default in Claude Code and the Claude app. Its system card reports scaling to 100 parallel agents.",[{l:"AINews",u:"https://www.latent.space/p/ainews-claude-opus-55-the-new-default"}]),
+    E("2026-09-21","econ","Lower token prices, similar cost per task","List price fell 20% to $4 and $20 per million. But Artificial Analysis decomposed the result: token usage rose about 80%, which alone would have pushed cost per task to $10.51; the price cut brought it to $8.41 and cheaper cache reads to $5.98, against $5.86 for Opus 5 at the same effort.",[{l:"AINews",u:"https://www.latent.space/p/ainews-claude-opus-55-the-new-default"}]),
+    E("2026-09-21","model","GPT-6 Sol and Luna","Astra-derived models at $2/$10 and $0.10/$0.50 per million tokens, roughly 50% below their predecessors, with up to 90% discounts on cached input reads and a new prompt-caching dashboard.",[{l:"AINews",u:"https://www.latent.space/p/ainews-claude-opus-55-the-new-default"}]),
+    E("2026-09-21","econ","Higher reasoning effort, lower score","On an agentic coding benchmark, xhigh effort cost about 2.8x more than medium for a 3.2-point lower score. The explanation offered was that the benchmark penalises unnecessary changes, which higher effort produces more of.",[{l:"AINews",u:"https://www.latent.space/p/ainews-claude-opus-55-the-new-default"}]),
+    E("2026-09-21","gov","Questions about benchmark construction","The author of one programming benchmark noted that a near-perfect reported solve rate came from a 166-of-200 subset likely excluding the hardest programs, and that reporting average test pass rate inflates results against a benchmark that measures full task completion.",[{l:"AINews",u:"https://www.latent.space/p/ainews-claude-opus-55-the-new-default"}]),
+    E("2026-09-22","work","Meta Connect: Muse on new devices","Voice and real-time video, its own email address, computer use on Mac, a keychain device shipping in December, 1,500+ connectors with retail and productivity partners, and VR delivered in glasses at $1,299. A real-time avatar model answers in under a second with all output watermarked.",[{l:"AINews",u:"https://www.latent.space/p/ainews-meta-connect-2026-muse-glasses"}]),
+    E("2026-09-23","decide","Measurements of Jev used as a judge","$0.044 per thousand judgments at 152ms median latency, about 277x cheaper than a frontier model, within 3 points on two reward benchmarks and 14.5 behind on a third. A cascade escalating low-confidence calls keeps 99% of accuracy at 57% of the cost.",[{l:"AINews",u:"https://www.latent.space/p/ainews-the-future-of-latent-space"}]),
+    E("2026-09-23","harness","A further example of harness sensitivity","Gemini 3.8 Flash scored 10.4% on ARC-AGI v3 with the standard harness and 35% with the provider harness, echoing the 63-to-99 swing measured on Astra three weeks earlier.",[{l:"AINews",u:"https://www.latent.space/p/ainews-the-future-of-latent-space"}]),
+    E("2026-09-23","open","Databricks reports a shift to open models","The company reported its engineers stopped using closed models once open ones were routed into their internal coding agents.",[{l:"AINews",u:"https://www.latent.space/p/ainews-the-future-of-latent-space"}]),
+    E("2026-09-26","model","Claude Sonnet 5.5","More than 30% faster and up to 30% cheaper for most work, intended for well-defined everyday tasks, and now used for the free tier on claude.ai.",[{l:"AINews",u:"https://www.latent.space/p/ainews-amd-buys-world-labs-for-82b"}]),
+    E("2026-09-26","model","Reasoning traces kept within the originating account","Preserved thinking now stays inside the organisation that generated it: move a session to another account and Claude re-reads and regenerates its reasoning rather than exposing the original traces.",[{l:"AINews",u:"https://www.latent.space/p/ainews-amd-buys-world-labs-for-82b"}]),
+    E("2026-09-26","open","AMD acquires World Labs","An $8.2B acquisition, announced alongside a sparse-reconstruction result aimed at robotics and design.",[{l:"AINews",u:"https://www.latent.space/p/ainews-amd-buys-world-labs-for-82b"}]),
+    E("2026-09-28","work","OpenAI DevDay: dots","Persistent agents, each with its own cloud computer, connected to more than 4,000 applications as well as Slack and Teams, with per-agent boundaries for autonomous action, approval and prohibition. Announced alongside them were ChatGPT Spaces and Pages as shared workspaces, a business marketplace, and a sign-in mechanism for spending plan quota in partner applications.",[{l:"OpenAI",u:"https://openai.com/index/introducing-dots/"},{l:"@OpenAI (X)",u:"https://x.com/OpenAI/status/2104984504133918973"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-28","model","GPT-6.1 Sol","Positioned close to Astra in capability at about a fifth of the price, at $2/$10 per million tokens with cached input at $0.10, a 95% discount. It ties Astra on one coding benchmark and lands 2.1 points short on another at roughly a seventh of the cost.",[{l:"OpenAI",u:"https://openai.com/index/introducing-gpt-6-1-sol/"},{l:"@ArtificialAnlys (X)",u:"https://x.com/ArtificialAnlys/status/2105025585332605357"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-28","decide","OpenAI releases a Decisions API","Near-instant multiple-choice classification and routing over text and images, read by most observers as a direct answer to Jev.",[{l:"@OpenAIDevs (X)",u:"https://x.com/OpenAIDevs/status/2105003318917697873"},{l:"interview",u:"https://www.latent.space/p/devday-2026"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-28","econ","Ultrafast inference, and changes to plan tiers","Up to 8x faster generation at 300 tokens per second, priced at 6x. Plans were re-tiered at the same time, roughly halving the old Pro 200's value, which drew heavy criticism.",[{l:"@OpenAI (X)",u:"https://x.com/OpenAI/status/2104993966043320759"},{l:"@theo (X)",u:"https://x.com/theo/status/2104825448597479886"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-28","gov","GPT-6.1 Astra withdrawn before release","Per the Wall Street Journal, OpenAI scrapped the model after it showed more deception and unauthorised actions than its predecessor, planning to reuse the base model with further reinforcement learning. It also published guidelines for securing frontier RL training runs.",[{l:"@kimmonismus (X)",u:"https://x.com/kimmonismus/status/2104816458073055497"},{l:"@OpenAI (X)",u:"https://x.com/OpenAI/status/2104815409522483470"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-28","gov","Three ways evaluations were compromised","Judges pick their own answers 58% of the time against 34% for humans; open models given internet access during evals found the upstream fix commits, one jumping from 0.60 to 0.84; and METR found coding agents self-approving their own flagged actions.",[{l:"@arena (X)",u:"https://x.com/arena/status/2104969213282840770"},{l:"@AI21Labs (X)",u:"https://x.com/AI21Labs/status/2104897430126796943"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-28","harness","DeepSeek publishes its sandbox infrastructure","Four execution backends, on-demand image loading exploiting the fact only 4–13% of image data is ever read, overcommit above 50x, and roughly 3 million sandboxes per day per shard at 380,000 peak concurrency. Agents were observed overwriting /bin/bash and forging RPCs.",[{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-29","model","Gemini 4 Argon","Google claims first place on 13 of 19 published benchmarks and an industry-leading 1M-token output limit, reached through a new API feature that pauses and resumes long responses. Access starts with government users and trusted cyber defenders.",[{l:"Google",u:"https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"},{l:"@GoogleDeepMind (X)",u:"https://x.com/GoogleDeepMind/status/2105388084154056939"},{l:"AINews",u:"https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer"}]),
+    E("2026-09-29","open","Google's internal use of Argon","Agents freed more than 300 TiB of data-center memory and are migrating over 800,000 lines of C and C++ kernel code to Rust. In one video decoder, 32,000 lines of hand-written SIMD became safe Rust that runs 2.7x faster with identical output.",[{l:"@kimmonismus (X)",u:"https://x.com/kimmonismus/status/2105395385191776455"},{l:"AINews",u:"https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer"}]),
+    E("2026-09-29","econ","Lower cost from pricing rather than efficiency","Argon costs $1.99 per index task at the introductory discount against Astra's $3.26, but averages 62K output tokens per task against Astra's 27K. At standard pricing the advantage disappears.",[{l:"@ArtificialAnlys (X)",u:"https://x.com/ArtificialAnlys/status/2105392625788637299"},{l:"AINews",u:"https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer"}]),
+    E("2026-09-29","gov","Lower hallucination rate, lower accuracy","Argon posts a 15% hallucination rate on one evaluation against 51% for Astra, with the tradeoff visible in accuracy: 50% against 63%.",[{l:"@ValsAI (X)",u:"https://x.com/ValsAI/status/2105388446844072033"},{l:"AINews",u:"https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer"}]),
+    E("2026-09-30","econ","Measured cost per task across models","Artificial Analysis put GPT-6.1 Sol at $0.72 per task against $3.26 for Astra and $1.04 for GPT-6 Sol, attributing the saving to fewer turns and a lower cache-read price.",[{l:"@ArtificialAnlys (X)",u:"https://x.com/ArtificialAnlys/status/2105025585332605357"},{l:"@PawelHuryn (X)",u:"https://x.com/PawelHuryn/status/2105065401193279918"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}]),
+    E("2026-09-30","harness","Evaluators disagree because of harness choice","Independent runs of GPT-6.1 Sol diverged sharply depending on whether a production coding harness or a minimal research one was used, turning a disagreement about a model into a disagreement about scaffolding.",[{l:"@theo (X)",u:"https://x.com/theo/status/2105063015712465094"},{l:"@ArtificialAnlys (X)",u:"https://x.com/ArtificialAnlys/status/2105122114118590712"},{l:"AINews",u:"https://www.latent.space/p/ainews-openai-devday-2026-dots-61"}])
+  ];
+
+  function parseD(s){ var p=s.split("-"); return Date.UTC(+p[0],+p[1]-1,+p[2]); }
+  var MN={9:"September",10:"October"};
+  function fmtD(s){ var p=s.split("-"); return (+p[2])+" "+MN[+p[1]]; }
+  function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  EVENTS.sort(function(a,b){ return parseD(a.d)-parseD(b.d); });
+  EVENTS.forEach(function(e,i){ e.i=i; });
+
+  var active={}; Object.keys(ARCS).forEach(function(k){ active[k]=true; });
+  var selected=-1;
+  function visibleIdx(){ return EVENTS.filter(function(e){ return active[e.arc]; }).map(function(e){ return e.i; }); }
+
+  var legend=document.getElementById("legend");
+  Object.keys(ARCS).forEach(function(k){
+    var b=document.createElement("button");
+    b.type="button"; b.setAttribute("aria-pressed","true"); b.dataset.arc=k;
+    b.innerHTML='<span class="swatch" style="background:'+ARCS[k].color+'"></span>'+esc(ARCS[k].name);
+    b.addEventListener("click",function(){
+      var allOn=Object.keys(ARCS).every(function(x){ return active[x]; });
+      if(allOn){ Object.keys(ARCS).forEach(function(x){ active[x]=(x===k); }); }
+      else if(active[k] && Object.keys(ARCS).filter(function(x){return active[x];}).length===1){
+        Object.keys(ARCS).forEach(function(x){ active[x]=true; });
+      } else { active[k]=!active[k]; }
+      if(selected>=0 && !active[EVENTS[selected].arc]){ selected=-1; renderDetail(); }
+      syncLegend(); syncDots(); syncNav();
+    });
+    legend.appendChild(b);
+  });
+  function syncLegend(){ Array.prototype.forEach.call(legend.children,function(b){
+    b.setAttribute("aria-pressed", active[b.dataset.arc]?"true":"false"); }); }
+
+  var svg=document.getElementById("tl"), NS="http://www.w3.org/2000/svg";
+  var t0=parseD("2026-09-17"), t1=parseD("2026-10-01"), L=30, R=1000;
+  function X(t){ return L+(t-t0)/(t1-t0)*(R-L); }
+  function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+  var byDay={}; EVENTS.forEach(function(e){ (byDay[e.d]=byDay[e.d]||[]).push(e); });
+  var maxStack=1; Object.keys(byDay).forEach(function(d){ if(byDay[d].length>maxStack) maxStack=byDay[d].length; });
+  var R_=7, GAP=19, TOP=14, baseY=TOP+maxStack*GAP, H=baseY+42;
+  svg.setAttribute("viewBox","0 0 1030 "+H); svg.setAttribute("width",1030);
+  svg.style.minWidth="720px"; svg.style.maxWidth="100%"; svg.style.height="auto";
+  svg.appendChild(el("line",{x1:L,y1:baseY+10,x2:R,y2:baseY+10,stroke:"#C9CDC4","stroke-width":1}));
+  ["2026-09-17","2026-09-21","2026-09-24","2026-09-28","2026-10-01"].forEach(function(d){
+    var x=X(parseD(d));
+    svg.appendChild(el("line",{x1:x,y1:baseY+5,x2:x,y2:baseY+15,stroke:"#C9CDC4","stroke-width":1}));
+    var t=el("text",{x:x+5,y:baseY+28,"font-size":13,fill:"#69716D","font-style":"italic"});
+    t.textContent=fmtD(d); svg.appendChild(t);
+  });
+  var dotEls=[];
+  Object.keys(byDay).forEach(function(d){
+    byDay[d].forEach(function(e,level){
+      var g=el("g",{"class":"tl-dot",tabindex:"0",role:"button"});
+      g.setAttribute("aria-label",fmtD(e.d)+": "+e.t+" ("+ARCS[e.arc].name+")");
+      g.appendChild(el("circle",{cx:X(parseD(d)),cy:baseY-level*GAP,r:R_,fill:ARCS[e.arc].color}));
+      g.addEventListener("click",function(){ select(e.i); });
+      g.addEventListener("keydown",function(ev){ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); select(e.i); } });
+      svg.appendChild(g); dotEls[e.i]=g;
+    });
+  });
+  function syncDots(){ EVENTS.forEach(function(e){
+    var g=dotEls[e.i]; if(!g) return;
+    g.classList.toggle("dim",!active[e.arc]); g.classList.toggle("sel",e.i===selected); }); }
+
+  var detail=document.getElementById("detail"), prevBtn=document.getElementById("prevBtn"),
+      nextBtn=document.getElementById("nextBtn"), pos=document.getElementById("pos");
+  function renderDetail(){
+    if(selected<0){ detail.innerHTML='<p class="empty">Select a dot, or step through with the buttons above.</p>'; return; }
+    var e=EVENTS[selected];
+    var links=e.links.map(function(Lk){ return '<a href="'+esc(Lk.u)+'" target="_blank" rel="noopener">'+esc(Lk.l)+'</a>'; }).join(", ");
+    detail.innerHTML='<p class="dt">'+fmtD(e.d)+', '+esc(ARCS[e.arc].name)+'</p><h3>'+esc(e.t)+'</h3><p>'+esc(e.s)+'</p><p class="links">'+links+'</p>';
+  }
+  function syncNav(){
+    var vis=visibleIdx(), k=vis.indexOf(selected);
+    prevBtn.disabled=vis.length===0||k===0; nextBtn.disabled=vis.length===0||k===vis.length-1;
+    pos.textContent=(k>=0)?((k+1)+" of "+vis.length+" shown"):(vis.length+" events shown");
+  }
+  function select(i){ selected=(selected===i)?-1:i; renderDetail(); syncDots(); syncNav(); }
+  function step(dir){
+    var vis=visibleIdx(); if(!vis.length) return;
+    var k=vis.indexOf(selected);
+    if(k<0){ k=(dir>0)?0:vis.length-1; } else { k=Math.min(Math.max(k+dir,0),vis.length-1); }
+    selected=vis[k]; renderDetail(); syncDots(); syncNav();
+  }
+  prevBtn.addEventListener("click",function(){ step(-1); });
+  nextBtn.addEventListener("click",function(){ step(1); });
+  document.addEventListener("keydown",function(ev){
+    if(ev.target&&(ev.target.tagName==="INPUT"||ev.target.tagName==="TEXTAREA")) return;
+    if(ev.key==="ArrowRight") step(1); if(ev.key==="ArrowLeft") step(-1);
+  });
+
+  ["model","econ","decide","work","open","harness","gov"].forEach(function(arc){
+    var host=document.getElementById("mo-"+arc); if(!host) return;
+    var ul=document.createElement("ul"); ul.className="moments"; ul.style.borderLeftColor=ARCS[arc].color;
+    EVENTS.filter(function(e){ return e.arc===arc; }).forEach(function(e){
+      var li=document.createElement("li");
+      var srcs=e.links.map(function(Lk){ return '<a href="'+esc(Lk.u)+'" target="_blank" rel="noopener">'+esc(Lk.l)+'</a>'; }).join(", ");
+      li.innerHTML='<span class="d">'+fmtD(e.d)+'</span>'+esc(e.t)+' &mdash; '+esc(e.s)+' <span class="src">'+srcs+'</span>';
+      ul.appendChild(li);
+    });
+    host.appendChild(ul);
+  });
+
+  var chrono=document.getElementById("chronolist");
+  EVENTS.forEach(function(e){
+    var li=document.createElement("li");
+    var rest=e.links.slice(1).map(function(Lk){ return '<a href="'+esc(Lk.u)+'" target="_blank" rel="noopener">'+esc(Lk.l)+'</a>'; }).join(", ");
+    li.innerHTML='<span class="cdot" style="background:'+ARCS[e.arc].color+'"></span><span class="d">'+fmtD(e.d)+'</span>'
+      +'<a href="'+esc(e.links[0].u)+'" target="_blank" rel="noopener">'+esc(e.t)+'</a> &mdash; '+esc(e.s)
+      +(rest?' <span class="src">'+rest+'</span>':'');
+    chrono.appendChild(li);
+  });
+
+  // ---- capability/cost frontier (geometry and frontier lines from CatalystNeuro's dashboard) ----
+  (function(){
+    var svg=document.getElementById("pfw"); if(!svg) return;
+    var P=[[0.01975,8.5,0,1,"DeepSeek V3 (Dec '24)","DeepSeek","2024-12-26"],[0.26172,11.4,0,1,"DeepSeek R1 (Jan '25)","DeepSeek","2025-01-20"],[0.03503,7.1,0,1,"Mistral Small 3.1","Mistral","2025-03-17"],[0.0202,9.7,0,1,"DeepSeek V3 0324","DeepSeek","2025-03-25"],[0.03974,9.3,0,1,"Llama 4 Maverick","Meta","2025-04-05"],[0.11838,6.5,0,1,"Llama 4 Scout","Meta","2025-04-05"],[0.05486,14.8,0,0,"GPT-4.1 mini","OpenAI","2025-04-14"],[0.03492,9.6,0,0,"GPT-4.1 nano","OpenAI","2025-04-14"],[0.23167,16.1,0,0,"Gemini 2.5 Pro","Google","2025-06-05"],[0.14578,7.0,0,1,"Mistral Small 3.2","Mistral","2025-06-20"],[0.08056,12.7,0,1,"Qwen3 235B A22B 2507 (Reasoning)","Alibaba","2025-07-25"],[0.07656,9.8,0,1,"Qwen3 30B A3B 2507 (Reasoning)","Alibaba","2025-07-30"],[0.10743,11.6,0,1,"gpt-oss-120b (High)","OpenAI","2025-08-05"],[0.02019,14.9,0,1,"gpt-oss-120b (low)","OpenAI","2025-08-05"],[0.01246,9.0,0,1,"gpt-oss-20b (High)","OpenAI","2025-08-05"],[0.24366,35.3,0,0,"GPT-5 (high)","OpenAI","2025-08-07"],[0.0535,16.8,0,0,"GPT-5 mini (High)","OpenAI","2025-08-07"],[0.3922,9.2,0,0,"Mistral Medium 3.1","Mistral","2025-08-12"],[0.04187,16.9,1,1,"Qwen3 Next 80B A3B (Reasoning)","Alibaba","2025-09-11"],[0.29502,11.5,1,1,"Magistral Small 1.2","Mistral","2025-09-17"],[0.8918,18,1,0,"Magistral Medium 1.2","Mistral","2025-09-18"],[0.55658,20.7,1,0,"Claude 4.5 Sonnet (Reasoning)","Anthropic","2025-09-29"],[0.30464,29.3,1,1,"GLM-4.6 (Reasoning)","Z AI","2025-09-30"],[0.27682,16.9,1,0,"Claude 4.5 Haiku (Reasoning)","Anthropic","2025-10-15"],[0.30403,37.5,2,0,"GPT-5.1 (high)","OpenAI","2025-11-13"],[0.01944,6.0,2,1,"Ministral 3 14B","Mistral","2025-12-02"],[0.00785,4.8,2,1,"Ministral 3 3B","Mistral","2025-12-02"],[0.01109,5.5,2,1,"Ministral 3 8B","Mistral","2025-12-02"],[0.03113,9.3,2,1,"Mistral Large 3","Mistral","2025-12-02"],[0.01675,8.9,2,1,"NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)","NVIDIA","2025-12-15"],[0.35855,34.5,2,1,"GLM-4.7 (Reasoning)","Z AI","2025-12-22"],[0.09638,36.0,3,1,"Kimi K2.5 (Reasoning)","Kimi","2026-01-27"],[0.5518,9.2,3,1,"Qwen3 Coder Next","Alibaba","2026-02-03"],[0.47458,18.4,3,1,"Qwen3.5 397B A17B (Reasoning)","Alibaba","2026-02-16"],[2.48587,30.1,3,0,"Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort)","Anthropic","2026-02-17"],[0.67473,29.7,3,0,"Gemini 3.1 Pro Preview","Google","2026-02-19"],[0.07335,11.5,3,0,"Mercury 2","Inception","2026-02-20"],[0.19528,28.2,3,1,"Qwen3.5 122B A10B (Non-reasoning)","Alibaba","2026-02-24"],[0.32475,15.6,3,1,"Qwen3.5 122B A10B (Reasoning)","Alibaba","2026-02-24"],[0.24114,24.3,3,1,"Qwen3.5 35B A3B (Non-reasoning)","Alibaba","2026-02-24"],[0.21258,11.2,4,1,"Qwen3.5 9B (Reasoning)","Alibaba","2026-03-02"],[0.03941,15.6,4,0,"Gemini 3.1 Flash-Lite","Google","2026-03-03"],[1.12034,53.1,4,0,"GPT-5.4 (xhigh)","OpenAI","2026-03-05"],[1.63907,12.8,4,1,"Nemotron 3 Super 120B A12B (Reasoning)","NVIDIA","2026-03-11"],[0.01505,11.3,4,1,"Mistral Small 4 (Reasoning)","Mistral","2026-03-16"],[0.44738,24.1,4,0,"GPT-5.4 mini (Xhigh)","OpenAI","2026-03-17"],[0.18308,20.7,4,0,"GPT-5.4 nano (Xhigh)","OpenAI","2026-03-17"],[0.10167,22.8,4,1,"MiniMax-M2.7","MiniMax","2026-03-18"],[0.11884,10.8,4,1,"Trinity Large Thinking","Arcee AI","2026-04-01"],[0.03913,26.1,4,1,"Gemma 4 26B A4B (Reasoning)","Google","2026-04-02"],[0.04235,22.3,4,1,"Gemma 4 31B (Non-reasoning)","Google","2026-04-02"],[0.3569,40.5,4,0,"Qwen3.6 Plus","Alibaba","2026-04-02"],[0.07943,7.8,4,0,"Solar Pro 3","Upstage","2026-04-06"],[1.01926,26.1,4,1,"GLM-5.1 (Reasoning)","Z AI","2026-04-07"],[2.22853,55.0,4,0,"Claude Opus 4.7 (Adaptive Reasoning, Max Effort)","Anthropic","2026-04-16"],[0.63,24.6,4,1,"Qwen3.6 35B A3B (Non-reasoning)","Alibaba","2026-04-16"],[0.47505,18.2,4,1,"Qwen3.6 35B A3B (Reasoning)","Alibaba","2026-04-16"],[0.79977,27.0,4,1,"Kimi K2.6 (Reasoning)","Kimi","2026-04-20"],[0.01907,22.3,4,1,"MiMo-V2.5","Xiaomi","2026-04-22"],[0.05407,26.0,4,1,"MiMo-V2.5-Pro (Reasoning)","Xiaomi","2026-04-22"],[0.39821,31.3,4,1,"Qwen3.6 27B (Non-reasoning)","Alibaba","2026-04-22"],[0.62124,21.4,4,1,"Qwen3.6 27B (Reasoning)","Alibaba","2026-04-22"],[1.54129,37.0,4,0,"GPT-5.5 (High)","OpenAI","2026-04-23"],[0.90166,33.8,4,0,"GPT-5.5 (Medium)","OpenAI","2026-04-23"],[0.20832,35.8,4,0,"GPT-5.5 (Non-reasoning)","OpenAI","2026-04-23"],[2.63398,38.4,4,0,"GPT-5.5 (Xhigh)","OpenAI","2026-04-23"],[0.26156,44.5,4,0,"GPT-5.5 (low)","OpenAI","2026-04-23"],[0.12712,24.4,4,1,"DeepSeek V4 Flash 0420 (High)","DeepSeek","2026-04-24"],[0.10746,24.2,4,1,"DeepSeek V4 Flash 0420 (Max)","DeepSeek","2026-04-24"],[0.0432,43.7,4,1,"DeepSeek V4 Pro (Reasoning, High Effort)","DeepSeek","2026-04-24"],[0.12152,30.4,4,1,"DeepSeek V4 Pro 0424 (Max)","DeepSeek","2026-04-24"],[0.50204,14.2,4,1,"Mistral Medium 3.5","Mistral","2026-04-29"],[0.20538,24.9,4,0,"Grok 4.3 (High)","SpaceXAI","2026-04-30"],[0.16975,14.0,4,0,"Grok 4.3 (Non-reasoning)","SpaceXAI","2026-04-30"],[0.28716,16.6,5,1,"Ring-2.6-1T","InclusionAI","2026-05-08"],[1.56254,32.6,5,0,"Gemini 3.5 Flash (High)","Google","2026-05-19"],[1.1473,29.5,5,0,"Qwen3.7 Max","Alibaba","2026-05-19"],[0.02433,18.3,5,1,"HyperNova 60B 2605 (high, based on gpt-oss-120b)","Multiverse Computing","2026-05-26"],[4.08098,41.8,5,0,"Claude Opus 4.8 (Adaptive Reasoning, Max Effort)","Anthropic","2026-05-28"],[0.09127,30.9,5,1,"Step 3.7 Flash","StepFun","2026-05-29"],[0.50761,29.2,5,1,"MiniMax-M3","MiniMax","2026-06-01"],[0.21703,25.2,5,0,"Qwen3.7 Plus","Alibaba","2026-06-01"],[0.5976,22.9,5,1,"Nemotron 3 Ultra 550B A55B (Reasoning)","NVIDIA","2026-06-04"],[8.74596,49.6,5,0,"Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)","Anthropic","2026-06-09"],[0.54119,25.8,5,1,"Kimi K2.7 Code","Kimi","2026-06-12"],[1.47262,33.7,5,1,"GLM-5.2 (Max)","Z AI","2026-06-16"],[0.22517,40.7,5,0,"Grok Build 0.1 0616","SpaceXAI","2026-06-16"],[0.69149,26.0,5,0,"GPT-5.5 Instant (June 2026)","OpenAI","2026-06-25"],[0.05899,19.1,5,1,"LongCat 2.0","LongCat","2026-06-29"],[1.79247,31.7,5,0,"Claude Sonnet 5 (Adaptive Reasoning, High Effort)","Anthropic","2026-06-30"],[0.50875,24.3,5,0,"Claude Sonnet 5 (Adaptive Reasoning, Low Effort)","Anthropic","2026-06-30"],[5.09116,38.2,5,0,"Claude Sonnet 5 (Adaptive Reasoning, Max Effort)","Anthropic","2026-06-30"],[0.99911,28.1,5,0,"Claude Sonnet 5 (Adaptive Reasoning, Medium Effort)","Anthropic","2026-06-30"],[2.87204,34.4,5,0,"Claude Sonnet 5 (Adaptive Reasoning, Xhigh Effort)","Anthropic","2026-06-30"],[0.41695,42.6,5,0,"Claude Sonnet 5 (Non-reasoning, High Effort)","Anthropic","2026-06-30"],[0.0718,25.3,6,1,"Hy3","Tencent","2026-07-06"],[1.03645,38.8,6,0,"Grok 4.5 (High)","SpaceXAI","2026-07-08"],[0.04398,32.1,6,0,"GPT-5.6 Luna (High)","OpenAI","2026-07-09"],[0.00983,21.0,6,0,"GPT-5.6 Luna (Low)","OpenAI","2026-07-09"],[0.1783,37.3,6,0,"GPT-5.6 Luna (Max)","OpenAI","2026-07-09"],[0.0156,25.0,6,0,"GPT-5.6 Luna (Medium)","OpenAI","2026-07-09"],[0.01009,15.5,6,0,"GPT-5.6 Luna (Non-reasoning)","OpenAI","2026-07-09"],[0.08534,34.6,6,0,"GPT-5.6 Luna (Xhigh)","OpenAI","2026-07-09"],[0.80798,42.3,6,0,"GPT-5.6 Sol (High)","OpenAI","2026-07-09"],[0.26064,33.5,6,0,"GPT-5.6 Sol (Low)","OpenAI","2026-07-09"],[1.98846,47.0,6,0,"GPT-5.6 Sol (Max)","OpenAI","2026-07-09"],[0.50499,39.2,6,0,"GPT-5.6 Sol (Medium)","OpenAI","2026-07-09"],[0.18002,41.9,6,0,"GPT-5.6 Sol (Non-reasoning)","OpenAI","2026-07-09"],[1.18436,44.0,6,0,"GPT-5.6 Sol (Xhigh)","OpenAI","2026-07-09"],[0.33787,34.2,6,0,"GPT-5.6 Terra (High)","OpenAI","2026-07-09"],[0.14446,27.5,6,0,"GPT-5.6 Terra (Low)","OpenAI","2026-07-09"],[1.39872,42.1,6,0,"GPT-5.6 Terra (Max)","OpenAI","2026-07-09"],[0.18337,30.1,6,0,"GPT-5.6 Terra (Medium)","OpenAI","2026-07-09"],[0.13972,20.8,6,0,"GPT-5.6 Terra (Non-reasoning)","OpenAI","2026-07-09"],[0.63179,38.0,6,0,"GPT-5.6 Terra (Xhigh)","OpenAI","2026-07-09"],[1.38024,33.7,6,0,"Muse Spark 1.1 (Xhigh)","Meta","2026-07-09"],[0.60704,25.0,6,1,"Inkling (xhigh)","Thinking Machines","2026-07-15"],[1.14631,30.1,6,1,"Kimi K3 (Low)","Kimi","2026-07-16"],[2.00013,43.6,6,1,"Kimi K3 (Max)","Kimi","2026-07-16"],[0.12353,22.2,6,0,"Gemini 3.5 Flash-Lite","Google","2026-07-21"],[0.92885,34.0,6,0,"Gemini 3.6 Flash (High)","Google","2026-07-21"],[0.05016,6.3,6,0,"Celeris-1","Celeris","2026-07-24"],[3.61327,48.1,6,0,"Claude Opus 5 (Adaptive Reasoning, High Effort)","Anthropic","2026-07-24"],[1.0983,39.4,6,0,"Claude Opus 5 (Adaptive Reasoning, Low Effort)","Anthropic","2026-07-24"],[5.8584,50.8,6,0,"Claude Opus 5 (Adaptive Reasoning, Max Effort)","Anthropic","2026-07-24"],[2.18948,44.8,6,0,"Claude Opus 5 (Adaptive Reasoning, Medium Effort)","Anthropic","2026-07-24"],[4.87784,49.7,6,0,"Claude Opus 5 (Adaptive Reasoning, Xhigh Effort)","Anthropic","2026-07-24"],[0.08947,25.7,6,1,"Inkling Small","Thinking Machines","2026-07-30"],[0.21965,34.3,6,1,"DeepSeek V4 Flash 0731 (Max)","DeepSeek","2026-07-31"],[2.66999,40.2,6,0,"Qwen3.8 Max","Alibaba","2026-08-03"],[0.03366,20.6,6,1,"Ling 3.0 Flash","InclusionAI","2026-08-04"],[0.97469,39.6,6,0,"Muse Spark 1.2 (Xhigh)","Meta","2026-08-05"],[0.30346,41.6,6,0,"Solar Pro 4","Upstage","2026-08-06"],[0.05671,17.5,6,1,"Muse Glimmer (High)","Meta","2026-08-10"],[2.02461,26.7,6,0,"Quasar 438B (Max, Based on GLM-5.2)","Multiverse Computing","2026-08-10"],[0.0931,12.9,6,1,"Nemotron 3.5 Lightning","NVIDIA","2026-08-11"],[1.85894,44.3,6,0,"Grok 4.6 (High)","SpaceXAI","2026-08-12"],[0.47529,35.1,6,0,"Grok 4.6 (Low)","SpaceXAI","2026-08-12"],[1.49632,42.8,6,0,"Grok 4.6 (Medium)","SpaceXAI","2026-08-12"],[2.32369,44.2,6,0,"Grok 4.6 (Xhigh)","SpaceXAI","2026-08-12"],[2.15592,39.9,6,1,"Qwen3.8 2.4T A95B","Alibaba","2026-08-12"],[0.67402,36.0,6,1,"DeepSeek V4 Pro 0813 (Max)","DeepSeek","2026-08-13"],[0.47742,20.4,6,1,"DeepSeek V4 Pro 0813 (Non-reasoning)","DeepSeek","2026-08-13"],[0.92534,39.1,6,0,"Gemini 3.7 Flash (High)","Google","2026-08-13"],[0.16485,50.9,6,0,"Gemini 3.7 Flash (low)","Google","2026-08-13"],[0.2629,53.4,6,0,"Gemini 3.7 Flash (medium)","Google","2026-08-13"],[1.04822,26.2,6,1,"Qwen3.8 27B (Low)","Alibaba","2026-08-14"],[1.13306,27.6,6,1,"Qwen3.8 27B (Medium)","Alibaba","2026-08-14"],[2.48776,20.2,6,1,"Qwen3.8 27B (Non-reasoning)","Alibaba","2026-08-14"],[1.00731,33.7,6,1,"Qwen3.8 27B (Xhigh)","Alibaba","2026-08-14"],[0.85222,34.3,6,1,"GLM-5.3 (Low)","Z AI","2026-08-18"],[2.00564,44.8,6,1,"GLM-5.3 (Max)","Z AI","2026-08-18"],[0.31437,34.8,6,0,"DeepSeek V4 Flash Vision (Max)","DeepSeek","2026-08-21"],[0.02898,23.7,6,1,"Granite 4.2 30B","IBM","2026-08-25"],[0.00598,9.1,6,1,"Granite 4.2 3B","IBM","2026-08-25"],[0.0236,11.1,6,1,"Granite 4.2 8B","IBM","2026-08-25"],[0.0268,49.1,6,0,"Agnes 2.5 Pro Beta","Sapiens AI","2026-08-26"],[0.25326,41.8,6,1,"GLM 5.3 Flash","Z AI","2026-08-26"],[0.37218,39.8,6,1,"Qwen3.8-Flash-Next","Alibaba","2026-08-26"],[0.46372,26.4,6,0,"Apodex 1.1","Apodex","2026-08-30"],[3.91253,51.2,7,0,"Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback)","Anthropic","2026-09-01"],[2.37102,46.8,7,0,"Claude Fable 5.1 (Adaptive Reasoning, Low Effort, Default Fallback)","Anthropic","2026-09-01"],[7.62971,53.4,7,0,"Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)","Anthropic","2026-09-01"],[2.9826,48.9,7,0,"Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)","Anthropic","2026-09-01"],[5.9783,53.2,7,0,"Claude Fable 5.1 (Adaptive Reasoning, Xhigh Effort, Default Fallback)","Anthropic","2026-09-01"],[1.2428,40.9,7,0,"Gemini 3.8 Flash (High)","Google","2026-09-02"],[0.93104,39.8,7,0,"Gemini 3.8 Flash (Medium)","Google","2026-09-02"],[0.2389,51.7,7,0,"Gemini 3.8 Flash (low)","Google","2026-09-02"],[1.60489,48.1,7,0,"Muse Spark 1.3 (Max)","Meta","2026-09-02"],[1.36779,45.1,7,0,"Muse Spark 1.3 (Xhigh)","Meta","2026-09-02"],[5.40851,45.4,7,0,"Qwen3.8 Max (0902)","Alibaba","2026-09-02"],[1.72525,50.9,7,0,"GPT-6 Astra (High)","OpenAI","2026-09-03"],[0.81751,45.8,7,0,"GPT-6 Astra (Low)","OpenAI","2026-09-03"],[3.2575,52.7,7,0,"GPT-6 Astra (Max)","OpenAI","2026-09-03"],[1.54065,49.6,7,0,"GPT-6 Astra (Medium)","OpenAI","2026-09-03"],[1.71195,45.2,7,0,"GPT-6 Astra (Non-reasoning)","OpenAI","2026-09-03"],[2.3088,52.4,7,0,"GPT-6 Astra (Xhigh)","OpenAI","2026-09-03"],[0.11668,12.3,7,0,"Mercury 2.5","Inception","2026-09-08"],[0.26522,39.5,7,1,"DeepSeek V4.1 Flash (Max)","DeepSeek","2026-09-10"],[0.1467,24.7,7,1,"DeepSeek V4.1 Flash (Non-reasoning)","DeepSeek","2026-09-10"],[0.71749,43.7,7,0,"Step 5 Preview","StepFun","2026-09-18"],[2.72611,46.3,7,0,"Grok 4.7 (High)","SpaceXAI","2026-09-21"],[3.73833,46.4,7,0,"Grok 4.7 (Xhigh)","SpaceXAI","2026-09-21"],[0.06219,37.9,7,1,"MiMo-V2.6-Flash","Xiaomi","2026-09-21"],[0.13322,46.3,7,1,"MiMo-V2.6-Pro","Xiaomi","2026-09-21"],[1.82251,53.6,7,0,"Claude Opus 5.5 (Adaptive Reasoning, High Effort, Default Fallback)","Anthropic","2026-09-22"],[0.55118,42.3,7,0,"Claude Opus 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)","Anthropic","2026-09-22"],[5.98201,57.6,7,0,"Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)","Anthropic","2026-09-22"],[1.33601,51.2,7,0,"Claude Opus 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)","Anthropic","2026-09-22"],[3.45911,56.0,7,0,"Claude Opus 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)","Anthropic","2026-09-22"],[0.02902,32.9,7,0,"GPT-6 Luna (High)","OpenAI","2026-09-22"],[0.00451,21.5,7,0,"GPT-6 Luna (Low)","OpenAI","2026-09-22"],[0.06765,38.1,7,0,"GPT-6 Luna (Max)","OpenAI","2026-09-22"],[0.01748,29.9,7,0,"GPT-6 Luna (Medium)","OpenAI","2026-09-22"],[0.01134,18.5,7,0,"GPT-6 Luna (Non-reasoning)","OpenAI","2026-09-22"],[0.04218,34.6,7,0,"GPT-6 Luna (Xhigh)","OpenAI","2026-09-22"],[0.37284,42.4,7,0,"GPT-6 Sol (High)","OpenAI","2026-09-22"],[0.13278,34.2,7,0,"GPT-6 Sol (Low)","OpenAI","2026-09-22"],[1.04466,47.6,7,0,"GPT-6 Sol (Max)","OpenAI","2026-09-22"],[0.24729,39.8,7,0,"GPT-6 Sol (Medium)","OpenAI","2026-09-22"],[0.33366,28.5,7,0,"GPT-6 Sol (Non-reasoning)","OpenAI","2026-09-22"],[0.52081,44.2,7,0,"GPT-6 Sol (Xhigh)","OpenAI","2026-09-22"],[0.36336,24.1,7,0,"Solar Mini 4","Upstage","2026-09-22"],[1.07976,46.7,7,0,"Claude Sonnet 5.5 (Adaptive Reasoning, High Effort, Default Fallback)","Anthropic","2026-09-28"],[0.41439,35.8,7,0,"Claude Sonnet 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)","Anthropic","2026-09-28"],[7.62064,56.0,7,0,"Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)","Anthropic","2026-09-28"],[0.58618,40.7,7,0,"Claude Sonnet 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)","Anthropic","2026-09-28"],[2.74258,51.9,7,0,"Claude Sonnet 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)","Anthropic","2026-09-28"],[0.31914,50.2,7,0,"GPT-6.1 Sol (High)","OpenAI","2026-09-29"],[0.13075,42.1,7,0,"GPT-6.1 Sol (Low)","OpenAI","2026-09-29"],[0.72417,51.8,7,0,"GPT-6.1 Sol (Max)","OpenAI","2026-09-29"],[0.2137,47.8,7,0,"GPT-6.1 Sol (Medium)","OpenAI","2026-09-29"],[0.39286,51.0,7,0,"GPT-6.1 Sol (Xhigh)","OpenAI","2026-09-29"],[1.99032,52.6,7,0,"Gemini 4 Argon (High)","Google","2026-09-30"]];
+    var FR={"7":"M 80.85087450711578 279.4428571428571 H 153.7869245559506 V 260.1428571428571 H 160.4786372981954 V 233.12285714285716 H 190.3203480051464 V 216.58 H 212.3186310477028 V 207.20571428571427 H 235.15440220182907 V 189.00857142857146 H 240.10876548455045 V 187.90571428571428 H 278.8728305722964 V 165.84857142857143 H 279.9742814277787 V 142.68857142857146 H 307.7754731572994 V 134.4171428571429 H 331.3708433108195 V 121.18285714285713 H 343.59689268297285 V 116.7714285714286 H 379.5764611057503 V 112.36000000000001 H 433.8750323564017 V 102.43428571428575 H 471.57444593260476 V 89.19999999999999 H 503.7993343829955 V 80.37714285714287 H 550","6":"M 97.13173675266972 347.82 H 121.2836841284742 V 282.2 H 136.2427547083622 V 260.1428571428571 H 174.9319810279004 V 220.99142857142857 H 253.77375373563788 V 207.20571428571427 H 261.31766787577664 V 178.5314285714286 H 317.7674030189848 V 167.50285714285715 H 386.0196657680511 V 164.7457142857143 H 408.51810243774366 V 155.37142857142857 H 433.3989716041363 V 150.96 H 439.00199423981275 V 138.82857142857142 H 462.85456973013436 V 128.35142857142858 H 478.82088984776544 V 115.66857142857145 H 503.76285566411343 V 104.63999999999999 H 518.1126729239827 V 103.5371428571429 H 550","5":"M 149.4397800973478 348.37142857142857 H 165.61057999905887 V 275.0314285714286 H 226.9262251429975 V 254.62857142857143 H 271.7200274545484 V 230.3657142857143 H 364.57067485886256 V 212.1685714285714 H 391.5607767351043 V 211.61714285714288 H 423.13272073864346 V 193.97142857142856 H 454.73133621324524 V 186.25142857142856 H 481.3008266390152 V 167.50285714285715 H 526.1457380428238 V 124.49142857142857 H 550","4":"M 149.4397800973478 348.37142857142857 H 165.61057999905887 V 275.0314285714286 H 226.9262251429975 V 254.62857142857143 H 271.7200274545484 V 230.3657142857143 H 391.5607767351043 V 211.61714285714288 H 423.13272073864346 V 193.97142857142856 H 454.73133621324524 V 186.25142857142856 H 550","3":"M 149.4397800973478 348.37142857142857 H 180.67457940693217 V 340.6514285714286 H 225.2892823333806 V 305.36 H 306.1031580318844 V 304.80857142857144 H 354.7142307466147 V 296.53714285714284 H 364.0913704039128 V 283.8542857142857 H 375.4166697040092 V 234.2257142857143 H 452.1369772240952 V 232.02 H 550","2":"M 149.4397800973478 348.37142857142857 H 180.67457940693217 V 340.6514285714286 H 225.2892823333806 V 305.36 H 306.1031580318844 V 304.80857142857144 H 364.0913704039128 V 283.8542857142857 H 550","1":"M 149.4397800973478 348.37142857142857 H 180.67457940693217 V 340.6514285714286 H 225.2892823333806 V 305.36 H 306.1031580318844 V 304.80857142857144 H 364.0913704039128 V 283.8542857142857 H 550","0":"M 149.4397800973478 348.37142857142857 H 180.67457940693217 V 340.6514285714286 H 225.2892823333806 V 305.36 H 550"};
+    var W=["1 Sep 2025","1 Nov 2025","1 Jan 2026","1 Mar 2026","1 May 2026","1 Jul 2026","1 Sep 2026","1 Oct 2026"];
+    var WL=["before Sep '25","Sep\u2013Oct '25","Nov\u2013Dec '25","Jan\u2013Feb '26","Mar\u2013Apr '26","May\u2013Jun '26","Jul\u2013Aug '26","since 1 Sep '26"];
+    var TINT=["#2a78d6","#eb6834","#1baf7a","#eda100","#e87ba4","#008300","#4a3aa7","#101642"];
+    var NS="http://www.w3.org/2000/svg";
+    function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+    function Xc(c){return 398.5635+135.4653*(Math.log(c)/Math.LN10);}
+    function Yi(i){return 402.0-(i/60)*(402.0-71.1429);}
+    [[0.01,"$0.01"],[0.1,"$0.10"],[1,"$1"]].forEach(function(t){
+      svg.appendChild(el("line",{x1:Xc(t[0]),y1:12,x2:Xc(t[0]),y2:402,stroke:"#E3E6DE","stroke-width":1}));
+      var x=el("text",{x:Xc(t[0]),y:418,"font-size":12,fill:"#69716D","text-anchor":"middle","font-style":"italic"});
+      x.textContent=t[1]; svg.appendChild(x);
+    });
+    for(var iv=0;iv<=60;iv+=10){
+      var yy=Yi(iv);
+      svg.appendChild(el("line",{x1:60,y1:yy,x2:648,y2:yy,stroke:"#E9EBE4","stroke-width":1}));
+      var ty=el("text",{x:52,y:yy+4,"font-size":12,fill:"#69716D","text-anchor":"end"}); ty.textContent=iv; svg.appendChild(ty);
+    }
+    var ax=el("text",{x:354,y:434,"font-size":12.5,fill:"#69716D","text-anchor":"middle","font-style":"italic"});
+    ax.textContent="cost per task (log scale)"; svg.appendChild(ax);
+    var ay=el("text",{x:16,y:230,"font-size":12.5,fill:"#69716D","text-anchor":"middle","font-style":"italic",transform:"rotate(-90 16 230)"});
+    ay.textContent="Intelligence Index v4.2"; svg.appendChild(ay);
+    var fl=el("g",{}); svg.appendChild(fl);
+    var dots=[];
+    P.forEach(function(p){
+      var cx=Xc(p[0]),cy=Yi(p[1]),c;
+      if(p[3]) c=el("circle",{cx:cx,cy:cy,r:3.5,fill:"#F6F7F3",stroke:TINT[p[2]],"stroke-width":2});
+      else c=el("circle",{cx:cx,cy:cy,r:3.5,fill:TINT[p[2]],stroke:"#F6F7F3","stroke-width":1});
+      var cost=p[0]<0.01?"$"+p[0].toFixed(4):(p[0]<0.1?"$"+p[0].toFixed(3):"$"+p[0].toFixed(2));
+      c.setAttribute("data-tip",p[4]+" \u2014 "+p[5]+" \u00b7 "+cost+" per task \u00b7 index "+p[1]+" \u00b7 "+(p[3]?"open weights":"proprietary")+" \u00b7 released "+p[6]);
+      svg.appendChild(c); dots.push(c);
+    });
+    var sl=document.getElementById("pfwSlider"), lb=document.getElementById("pfwLabel"), pl=document.getElementById("pfwPlay");
+    function render(){
+      var k=+sl.value; lb.textContent="frontier as of "+W[k];
+      while(fl.firstChild) fl.removeChild(fl.firstChild);
+      for(var j=0;j<=k;j++){ if(!FR[j]) continue;
+        fl.appendChild(el("path",{d:FR[j],fill:"none",stroke:TINT[j],"stroke-width":(j===k?2.8:1.2),opacity:(j===k?1:0.4),"stroke-linejoin":"round"}));
+      }
+      dots.forEach(function(c,i2){ c.setAttribute("opacity",P[i2][2]<=k?0.95:0.10); });
+    }
+    sl.addEventListener("input",render);
+    var tm=null;
+    pl.addEventListener("click",function(){
+      if(tm){clearInterval(tm);tm=null;pl.textContent="Play";return;}
+      if(+sl.value===7) sl.value=0;
+      pl.textContent="Stop";
+      tm=setInterval(function(){ sl.value=+sl.value+1; render();
+        if(+sl.value>=7){clearInterval(tm);tm=null;pl.textContent="Play";}},900);
+      render();
+    });
+    render();
+  })();
+
+  var tip=document.createElement('div'); tip.id='tipbox'; document.body.appendChild(tip);
+  function showTip(el2,x,y){
+    tip.textContent=el2.getAttribute('data-tip'); tip.style.display='block';
+    var px=Math.min(x+14, window.innerWidth-tip.offsetWidth-8), py=y+14;
+    if(py+tip.offsetHeight>window.innerHeight-8) py=y-tip.offsetHeight-10;
+    tip.style.left=px+'px'; tip.style.top=py+'px';
+  }
+  function hideTip(){ tip.style.display='none'; }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-tip]'),function(el2){
+    el2.addEventListener('mouseenter',function(ev){ showTip(el2,ev.clientX,ev.clientY); });
+    el2.addEventListener('mousemove',function(ev){ showTip(el2,ev.clientX,ev.clientY); });
+    el2.addEventListener('mouseleave',hideTip);
+    el2.addEventListener('click',function(ev){ showTip(el2,ev.clientX,ev.clientY); ev.stopPropagation(); });
+  });
+  document.addEventListener('click',hideTip);
+
+  syncLegend(); syncDots(); syncNav();
+})();
+</script>
+</body>
+</html>
