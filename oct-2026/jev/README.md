@@ -3,6 +3,7 @@
 Materials for the LLM Dojo session on TypeSafe's Jev, October 2026. Two self-contained pages, linked from the site's main index; no build step.
 
 - `decision-models.html`: the slides. Arrow keys, space or a click move between slides; `F` toggles full screen, `N` shows the speaker notes; the URL hash holds the slide number (`#12`).
+- `jev_example.py`: the Python program shown on slide 6. It sends one request with a yes/no, a choice and a score question; it needs `requests` and an OpenRouter key in `OPENROUTER_API_KEY`.
 - `radar.html`: the Jev Radar Atlas. 3,404 projects merged from jevradar.com, madewithjev.com and 13 GitHub awesome-lists (fetched 1 October 2026), each labelled by Jev with its job, field and what it replaces; ten hand-picked examples per job; a searchable list.
 
 ## Method
