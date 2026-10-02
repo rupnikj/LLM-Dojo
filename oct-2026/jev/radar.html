@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{ --paper:#F6F7F3; --ink:#242927; --muted:#646C68; --rule:#DCDFD8; --panel:#EFF1EB; --panel2:#E4E8DF;
-         --link:#1D6A5E; --s1:#0B8A72; --s2:#B57426; --s3:#6A4FB3; --s4:#C24A2E; color-scheme:light }
+  :root{ --paper:#F0F4FF; --ink:#001565; --muted:#46507A; --rule:#D3DCF2; --panel:#FFFFFF; --panel2:#E3EAFB;
+         --link:#004AF5; --s1:#004AF5; --s2:#001565; --s3:#00E3B0; --s4:#F7EC5F; color-scheme:light }
   *{box-sizing:border-box}
-  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Newsreader', Georgia, 'Times New Roman', serif;
+  body{margin:0; background:linear-gradient(90deg, #00E3B0, #004AF5) top / 100% 10px no-repeat, var(--paper); color:var(--ink); font-family:'Newsreader', Georgia, 'Times New Roman', serif;
        font-size:18px; line-height:1.55; padding-inline:20px; padding-block:0}
   a{color:var(--link); text-decoration-thickness:1px; text-underline-offset:2px}
   a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, .lab:focus-visible{outline:2px solid var(--link); outline-offset:2px}
@@ -72,9 +72,9 @@
   .card{background:var(--panel); border-radius:3px; padding:12px 14px 10px; display:flex; flex-direction:column; gap:6px; min-width:0}
   .card .top{display:flex; gap:6px; flex-wrap:wrap}
   .chip{display:inline-block; font-size:11px; padding:1px 7px; border-radius:999px; background:var(--panel2); color:var(--ink)}
-  .chip.role{background:color-mix(in oklab, var(--s1) 20%, var(--panel))}
-  .chip.dom{background:color-mix(in oklab, var(--s3) 15%, var(--panel))}
-  .chip.llm{background:color-mix(in oklab, var(--s2) 22%, var(--panel))}
+  .chip.role{background:color-mix(in oklab, var(--s1) 16%, var(--panel))}
+  .chip.dom{background:color-mix(in oklab, var(--s3) 28%, var(--panel))}
+  .chip.llm{background:color-mix(in oklab, var(--s4) 70%, var(--panel))}
   .card h3{font-size:18.5px; line-height:1.25; margin:2px 0 0; font-weight:700; overflow-wrap:anywhere}
   .card h3 a{color:var(--ink); text-decoration:none} .card h3 a:hover{color:var(--link)}
   .card .sum{font-size:15.5px; margin:0; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere}
@@ -257,12 +257,12 @@ bars($('#bars-src'), AGG.srcs.map(([s, v]) => ({key:s, label:s, v})),
   }
   dated.forEach(([d, v], k) => {
     const h = (H - B - top) * v / step, x = L + 3 + k * bw;
-    s += `<rect x="${x + 1}" y="${H - B - h}" width="${bw - 2}" height="${h}" fill="${d === peak[0] ? 'var(--s2)' : 'var(--s1)'}"><title>${d}: ${v}</title></rect>`;
+    s += `<rect x="${x + 1}" y="${H - B - h}" width="${bw - 2}" height="${h}" fill="${d === peak[0] ? 'var(--s3)' : 'var(--s1)'}"><title>${d}: ${v}</title></rect>`;
     if (k % 2 === 0) s += `<text x="${x + bw / 2}" y="${H - B + 16}" text-anchor="middle">${+d.slice(8)}</text>`;
   });
   s += `<text x="${L + 3}" y="${H - 4}">September 2026</text></svg>`;
   $('#timeline').innerHTML = s;
-  $('#time-cap').textContent = `${fmt(AGG.dated)} projects carry a date. Jev launched on 15 September; the ochre bar is the peak.`;
+  $('#time-cap').textContent = `${fmt(AGG.dated)} projects carry a date. Jev launched on 15 September; the teal bar is the peak.`;
 })();
 
 // ---------- log strips ----------
